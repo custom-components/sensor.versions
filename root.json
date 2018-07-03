@@ -5,7 +5,7 @@
           "author": "Joakim Sørensen @ludeeus",
           "added_to_ha": "false",
           "added_in_version": "",
-          "overview_img": "false",
+          "overview_img": "true",
           "title": "versions",
           "short_description": "A sensor platform which allows you to get information about new versions.",
           "configuration": {
