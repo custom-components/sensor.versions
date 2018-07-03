@@ -19,6 +19,9 @@ key | description
 **platform (Required)** | The sensor platform name.  
 **flavor (Optional)** | Can be 'venv', 'hassbian', 'docker', 'hassio', defaults to 'venv'  
   
+#### Sample overview
+![Sample overview](overview.png)
+  
   
   
 ***
