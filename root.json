@@ -7,17 +7,19 @@
           "added_in_version": "",
           "overview_img": "true",
           "title": "versions",
-          "short_description": "A sensor platform which allows you to get information about new versions.",
+          "short_description": "A sensor platform which allows you to get the newest version number for your install method.",
           "configuration": {
               "platform": "versions",
-              "flavor": "docker"
+              "installation": "docker",
+              "branch": "beta"
           },
           "configuration_variables": {
               "required": {
                   "platform": "The sensor platform name."
               },
               "optional": {
-                  "flavor":"Can be 'venv', 'hassbian', 'docker', 'hassio', defaults to 'venv'"
+                  "installation":"Can be 'venv', 'hassbian', 'docker', 'hassio', defaults to 'venv'",
+                  "branch": "Can be 'stable', 'rc', 'beta', defaults to 'stable'"
               }
               },
           "demo_site_available": "false",
