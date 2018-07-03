@@ -1,0 +1,29 @@
+{  
+    "versions": {
+          "component": "sensor",
+          "mantained": "yes",
+          "author": "Joakim Sørensen @ludeeus",
+          "added_to_ha": "false",
+          "added_in_version": "",
+          "overview_img": "false",
+          "title": "versions",
+          "short_description": "A sensor platform which allows you to get information about new versions.",
+          "configuration": {
+              "platform": "versions",
+              "flavor": "docker"
+          },
+          "configuration_variables": {
+              "required": {
+                  "platform": "The sensor platform name."
+              },
+              "optional": {
+                  "flavor":"Can be 'venv', 'hassbian', 'docker', 'hassio', defaults to 'venv'"
+              }
+              },
+          "demo_site_available": "false",
+          "demo_site_url": "",
+          "instructions": "",
+          "ext_licenses": ""
+      }
+  }
+  
