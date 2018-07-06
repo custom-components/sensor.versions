@@ -22,8 +22,22 @@ key | description
 **platform (Required)** | The sensor platform name.  
 **installation (Optional)** | Can be 'venv', 'hassbian', 'docker', 'hassio', defaults to 'venv'  
 **branch (Optional)** | Can be 'stable', 'rc', 'beta', defaults to 'stable'  
-**image (Optional)** | Can be 'default', 'qemux86', 'qemux86-64', 'qemuarm', 'qemuarm-64', 'intel-nuc', 'raspberrypi', 'raspberrypi2', 'raspberrypi3', 'raspberrypi3-64', defaults to 'default'  
+**image (Optional)** | See image list for possible values, defaults to 'default'  
   
+### Image list
+
+**hassio**
+- default
+- qemux86
+- qemux86-64
+- qemuarm
+- qemuarm-64
+- intel-nuc
+- raspberrypi
+- raspberrypi2
+- raspberrypi3
+- raspberrypi3-64
+
 #### Sample overview
 ![Sample overview](overview.png)
   
