@@ -9,6 +9,8 @@ from homeassistant.helpers.entity import Entity
 import homeassistant.helpers.config_validation as cv
 from homeassistant.components.sensor import (PLATFORM_SCHEMA)
 
+__version__ = '0.0.5'
+
 REQUIREMENTS = ['pyhaversion==0.0.2']
 
 CONF_INSTALLATION = 'installation'
@@ -18,7 +20,6 @@ CONF_IMAGE = 'image'
 SCAN_INTERVAL = timedelta(seconds=300)
 
 PLATFORM_NAME = 'versions'
-PLATFORM_VERSION = '0.0.4'
 
 PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
     vol.Optional(CONF_INSTALLATION, default='venv'): cv.string,
