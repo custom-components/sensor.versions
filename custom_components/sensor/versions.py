@@ -9,13 +9,14 @@ from homeassistant.helpers.entity import Entity
 import homeassistant.helpers.config_validation as cv
 from homeassistant.components.sensor import (PLATFORM_SCHEMA)
 
-__version__ = '0.0.5'
+__version__ = '0.1.0'
 
 REQUIREMENTS = ['pyhaversion==0.0.2']
 
 CONF_INSTALLATION = 'installation'
 CONF_BRANCH = 'branch'
 CONF_IMAGE = 'image'
+CONF_NAME = 'name'
 
 SCAN_INTERVAL = timedelta(seconds=300)
 
@@ -25,6 +26,7 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
     vol.Optional(CONF_INSTALLATION, default='venv'): cv.string,
     vol.Optional(CONF_BRANCH, default='stable'): cv.string,
     vol.Optional(CONF_IMAGE, default='default'): cv.string,
+    vol.Optional(CONF_NAME, default='none'): cv.string,
 })
 
 def setup_platform(hass, config, add_devices, discovery_info=None):
@@ -32,17 +34,19 @@ def setup_platform(hass, config, add_devices, discovery_info=None):
     installation = config.get(CONF_INSTALLATION)
     branch = config.get(CONF_BRANCH)
     image = config.get(CONF_IMAGE)
-    add_devices([HomeAssistantVersion(installation, branch, image)])
+    name = config.get(CONF_NAME)
+    add_devices([HomeAssistantVersion(installation, branch, image, name)])
 
 class HomeAssistantVersion(Entity):
     """Representation of a Sensor."""
 
-    def __init__(self, installation, branch, image):
+    def __init__(self, installation, branch, image, name):
         """Initialize the sensor."""
         self._installation = installation
         self._branch = branch
         self._image = image
         self._state = None
+        self._name = name
         self.update()
 
     def update(self):
@@ -63,7 +67,11 @@ class HomeAssistantVersion(Entity):
     @property
     def name(self):
         """Return the name of the sensor."""
-        return 'HA version ' + self._installation + ' ' + self._branch
+        if self._name == 'none':
+            name = 'HA version ' + self._installation + ' ' + self._branch
+        else:
+            name = self._name
+        return name 
 
     @property
     def state(self):
