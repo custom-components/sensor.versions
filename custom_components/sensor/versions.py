@@ -38,6 +38,7 @@ def setup_platform(hass, config, add_devices, discovery_info=None):
     name = config.get(CONF_NAME)
     add_devices([HomeAssistantVersion(installation, branch, image, name)])
 
+
 class HomeAssistantVersion(Entity):
     """Representation of a Sensor."""
 

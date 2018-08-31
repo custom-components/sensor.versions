@@ -1,4 +1,4 @@
-# sensor.versions
+# sensor.versions [![Build Status](https://travis-ci.com/custom-components/sensor.versions.svg?branch=master)](https://travis-ci.com/custom-components/sensor.versions)
 
 A sensor platform which allows you to get the newest version number for your install method.
   
@@ -23,7 +23,7 @@ key | description
 **installation (Optional)** | Can be 'venv', 'hassbian', 'docker', 'hassio', defaults to 'venv'  
 **branch (Optional)** | Can be 'stable', 'rc', 'beta', defaults to 'stable'  
 **name (Optional)** | Set the a custom name for the platform entity.
-**image (Optional)** | Can be 'default', 'qemux86', 'qemux86-64', 'qemuarm', 'qemuarm-64', 'intel-nuc', 'raspberrypi', 'raspberrypi2', 'raspberrypi3', 'raspberrypi3-64', defaults to 'default'  
+**image (Optional)** | Can be 'default', 'qemux86', 'qemux86-64', 'qemuarm', 'qemuarm-64', 'intel-nuc', 'raspberrypi', 'raspberrypi2', 'raspberrypi3', 'raspberrypi3-64', 'tinker', defaults to 'default'  
 
 _rc and beta is will result in the same value._
 
