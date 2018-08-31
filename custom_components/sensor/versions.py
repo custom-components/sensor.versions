@@ -9,7 +9,7 @@ from homeassistant.helpers.entity import Entity
 import homeassistant.helpers.config_validation as cv
 from homeassistant.components.sensor import (PLATFORM_SCHEMA)
 
-__version__ = '0.1.0'
+__version__ = '0.2.0'
 
 REQUIREMENTS = ['pyhaversion==0.1.0']
 
