@@ -11,7 +11,7 @@ from homeassistant.components.sensor import (PLATFORM_SCHEMA)
 
 __version__ = '0.1.0'
 
-REQUIREMENTS = ['pyhaversion==0.0.2']
+REQUIREMENTS = ['pyhaversion==0.1.0']
 
 CONF_INSTALLATION = 'installation'
 CONF_BRANCH = 'branch'
@@ -28,6 +28,7 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
     vol.Optional(CONF_IMAGE, default='default'): cv.string,
     vol.Optional(CONF_NAME, default='none'): cv.string,
 })
+
 
 def setup_platform(hass, config, add_devices, discovery_info=None):
     """Create the sensor"""
@@ -46,6 +47,7 @@ class HomeAssistantVersion(Entity):
         self._branch = branch
         self._image = image
         self._state = None
+        self._attributes = None
         self._name = name
         self.update()
 
@@ -61,8 +63,9 @@ class HomeAssistantVersion(Entity):
             branch = 'beta'
         else:
             branch = self._branch
-        version = ha_version.get_version_number(source, branch, self._image)
-        self._state = version
+        data = ha_version.get_version_number(source, branch, self._image)
+        self._state = data['homeassistant']
+        self._attributes = data
 
     @property
     def name(self):
@@ -71,7 +74,7 @@ class HomeAssistantVersion(Entity):
             name = 'HA version ' + self._installation + ' ' + self._branch
         else:
             name = self._name
-        return name 
+        return name
 
     @property
     def state(self):
@@ -82,3 +85,8 @@ class HomeAssistantVersion(Entity):
     def icon(self):
         """Return the icon of the sensor."""
         return 'mdi:package-up'
+
+    @property
+    def device_state_attributes(self):
+        """Return the attributes of the sensor"""
+        return self._attributes
