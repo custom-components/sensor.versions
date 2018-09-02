@@ -35,6 +35,7 @@ jobs:
     # Load component with Home Assistant
     - stage: load
       name: "Load component/platform in Home Assistant"
+      install: pip install homeassistant
       python: "3.6"
       script:
         - hass -c . --daemon
