@@ -54,7 +54,7 @@ class HomeAssistantVersion(Entity):
         self.update()
 
     def update(self):
-        """Method to update sensor value."""
+        """Update sensor value."""
         import pyhaversion
         if self._installation == 'venv' or self._installation == 'hassbian':
             source = 'pip'
@@ -89,5 +89,5 @@ class HomeAssistantVersion(Entity):
 
     @property
     def device_state_attributes(self):
-        """Return the attributes of the sensor"""
+        """Return the attributes of the sensor."""
         return self._attributes
