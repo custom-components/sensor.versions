@@ -1,13 +1,39 @@
 language: python
-install: pip install pycodestyle homeassistant
+stages:
+  - linting
+  - load
+
 jobs:
   include:
-    - stage: test
+    #Linting
+    - stage: linting
+      install: pip install pycodestyle
       name: "Linting with pycodestyle"
       python: "3.6"
-      script:
-        - find . -name \*.py -exec pycodestyle {} +
-    - stage: test
+      script: find . -name \*.py -exec pycodestyle {} +
+    - stage: linting
+      install: pip install pydocstyle
+      name: "Linting with pydocstyle"
+      python: "3.6"
+      script: find . -name \*.py -exec pydocstyle {} +
+    - stage: linting
+      install: pip install pylint
+      name: "Linting with pylint"
+      python: "3.6"
+      script: find . -name \*.py -exec pylint --disable=F0401 {} +
+    - stage: linting
+      install: pip install pyflakes
+      name: "Linting with pyflakes"
+      python: "3.6"
+      script: find . -name \*.py -exec pyflakes {} +
+    - stage: linting
+      install: pip install flake8
+      name: "Linting with flake8"
+      python: "3.6"
+      script: find . -name \*.py -exec flake8 {} +
+
+    # Load component with Home Assistant
+    - stage: load
       name: "Load component/platform in Home Assistant"
       python: "3.6"
       script:

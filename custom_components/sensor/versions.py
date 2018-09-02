@@ -1,5 +1,6 @@
 """
 A platform which allows you to get information about new versions.
+
 For more details about this component, please refer to the documentation at
 https://github.com/custom-components/sensor.versions
 """
@@ -9,9 +10,9 @@ from homeassistant.helpers.entity import Entity
 import homeassistant.helpers.config_validation as cv
 from homeassistant.components.sensor import (PLATFORM_SCHEMA)
 
-__version__ = '0.2.0'
+__version__ = '0.3.0'
 
-REQUIREMENTS = ['pyhaversion==0.1.0']
+REQUIREMENTS = ['pyhaversion==1.0.0']
 
 CONF_INSTALLATION = 'installation'
 CONF_BRANCH = 'branch'
@@ -31,7 +32,7 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
 
 
 def setup_platform(hass, config, add_devices, discovery_info=None):
-    """Create the sensor"""
+    """Create the sensor."""
     installation = config.get(CONF_INSTALLATION)
     branch = config.get(CONF_BRANCH)
     image = config.get(CONF_IMAGE)
@@ -53,9 +54,8 @@ class HomeAssistantVersion(Entity):
         self.update()
 
     def update(self):
-        """Method to update sensor value"""
-        from pyhaversion import HAVersion
-        ha_version = HAVersion()
+        """Method to update sensor value."""
+        import pyhaversion
         if self._installation == 'venv' or self._installation == 'hassbian':
             source = 'pip'
         else:
@@ -64,7 +64,7 @@ class HomeAssistantVersion(Entity):
             branch = 'beta'
         else:
             branch = self._branch
-        data = ha_version.get_version_number(source, branch, self._image)
+        data = pyhaversion.get_version_number(source, branch, self._image)
         self._state = data['homeassistant']
         self._attributes = data
 
