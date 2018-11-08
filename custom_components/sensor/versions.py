@@ -16,7 +16,7 @@ from homeassistant.const import CONF_NAME, CONF_SOURCE
 from homeassistant.helpers.entity import Entity
 from homeassistant.util import Throttle
 
-__version__ = "9.9.9"
+__version__ = '9.9.9'
 
 REQUIREMENTS = ['pyhaversion==2.0.1']
 
